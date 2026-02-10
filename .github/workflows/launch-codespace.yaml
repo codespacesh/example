@@ -30,7 +30,7 @@ jobs:
               --parameter issue_title="${{ github.event.issue.title }}" \
               --parameter issue_body="$(echo '${{ toJSON(github.event.issue.body) }}' | jq -r '.')" \
               --parameter issue_branch="${{ steps.branch.outputs.name }}" \
-              --parameter "AI Prompt=Working on issue #${{ github.event.issue.number }}"
+              --parameter "ai_prompt=Working on issue #${{ github.event.issue.number }}"
             coder restart "$WS_NAME" --yes
           else
             coder create "$WS_NAME" --template example --yes \
@@ -41,7 +41,7 @@ jobs:
               --parameter issue_title="${{ github.event.issue.title }}" \
               --parameter issue_body="$(echo '${{ toJSON(github.event.issue.body) }}' | jq -r '.')" \
               --parameter issue_branch="${{ steps.branch.outputs.name }}" \
-              --parameter "AI Prompt=Working on issue #${{ github.event.issue.number }}"
+              --parameter "ai_prompt=Working on issue #${{ github.event.issue.number }}"
           fi
 
       - name: Comment on issue
