@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "type": "stdio",
+      "command": "docker",
+      "args": [
+        "run", "-i", "--rm", "--init",
+        "--network", "host",
+        "--shm-size=2gb",
+        "-e", "DISPLAY=:99",
+        "-v", "/tmp/.X11-unix:/tmp/.X11-unix",
+        "mcr.microsoft.com/playwright/mcp:latest",
+        "--headed",
+        "--no-sandbox"
+      ],
+      "env": {}
+    }
+  }
+}
