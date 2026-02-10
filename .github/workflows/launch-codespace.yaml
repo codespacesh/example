@@ -19,7 +19,7 @@ jobs:
 
       - name: Create or update workspace
         env:
-          CODER_URL: https://coder.noel.codespace.sh
+          CODER_URL: https://noel.codespace.sh
           CODER_SESSION_TOKEN: ${{ secrets.CODER_TOKEN }}
         run: |
           WS_NAME="example-issue-${{ github.event.issue.number }}"
@@ -47,7 +47,7 @@ jobs:
         with:
           script: |
             const wsName = `example-issue-${context.issue.number}`;
-            const coderUrl = 'https://coder.noel.codespace.sh';
+            const coderUrl = 'https://noel.codespace.sh';
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,

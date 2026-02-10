@@ -16,7 +16,7 @@ jobs:
 
       - name: Push template
         env:
-          CODER_URL: https://coder.noel.codespace.sh
+          CODER_URL: https://noel.codespace.sh
           CODER_SESSION_TOKEN: ${{ secrets.CODER_TOKEN }}
         run: |
           coder templates push example --directory coder --yes
