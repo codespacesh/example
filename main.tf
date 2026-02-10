@@ -8,6 +8,6 @@ module "workspace" {
   git_repos    = { "example" = "https://github.com/codespacesh/example" }
 
   services = {
-    app = { port = 5173, public = true, healthcheck = true }
+    app = { port = 5173, public = true, healthcheck = true, healthcheck_path = "/healthz" }
   }
 }
