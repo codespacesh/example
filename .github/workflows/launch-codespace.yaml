@@ -1,0 +1,56 @@
+name: Launch Codespace
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  launch:
+    if: github.event.label.name == 'launch-codespace'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Coder CLI
+        run: curl -fsSL https://coder.com/install.sh | sh
+
+      - name: Create branch name
+        id: branch
+        run: |
+          SLUG=$(echo "${{ github.event.issue.title }}" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | head -c 40)
+          echo "name=issue-${{ github.event.issue.number }}-${SLUG}" >> "$GITHUB_OUTPUT"
+
+      - name: Create or update workspace
+        env:
+          CODER_URL: https://coder.noel.codespace.sh
+          CODER_SESSION_TOKEN: ${{ secrets.CODER_TOKEN }}
+        run: |
+          WS_NAME="example-issue-${{ github.event.issue.number }}"
+
+          if coder show "$WS_NAME" >/dev/null 2>&1; then
+            coder update "$WS_NAME" --always-prompt=false \
+              --parameter issue_number="${{ github.event.issue.number }}" \
+              --parameter issue_title="${{ github.event.issue.title }}" \
+              --parameter issue_body="$(echo '${{ toJSON(github.event.issue.body) }}' | jq -r '.')" \
+              --parameter issue_branch="${{ steps.branch.outputs.name }}"
+            coder restart "$WS_NAME" --yes
+          else
+            coder create "$WS_NAME" --template example --yes \
+              --parameter cpu=4 \
+              --parameter memory=8 \
+              --parameter disk_size=50 \
+              --parameter issue_number="${{ github.event.issue.number }}" \
+              --parameter issue_title="${{ github.event.issue.title }}" \
+              --parameter issue_body="$(echo '${{ toJSON(github.event.issue.body) }}' | jq -r '.')" \
+              --parameter issue_branch="${{ steps.branch.outputs.name }}"
+          fi
+
+      - name: Comment on issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const wsName = `example-issue-${context.issue.number}`;
+            const coderUrl = 'https://coder.noel.codespace.sh';
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `Codespace launched: [${wsName}](${coderUrl}/@admin/${wsName})\n\nThe AI agent is working on this issue.`
+            });
