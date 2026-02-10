@@ -3,4 +3,4 @@ dist
 .output
 .nitro
 .tanstack
-bun.lock
+src/routeTree.gen.ts

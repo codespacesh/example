@@ -4,9 +4,8 @@
 module "workspace" {
   source = "git::https://github.com/codespacesh/templates.git//dind/module"
 
-  project_name    = "example"
-  git_repos       = { "example" = "https://github.com/codespacesh/example" }
-  install_command = "bun install"
+  project_name = "example"
+  git_repos    = { "example" = "https://github.com/codespacesh/example" }
 
   services = {
     app = { port = 5173, public = true, healthcheck = true }
