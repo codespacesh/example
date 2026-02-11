@@ -8,7 +8,7 @@ variable "claude_code_oauth_token" {
 }
 
 module "workspace" {
-  source = "git::https://github.com/codespacesh/templates.git//dind/module"
+  source = "git::https://github.com/codespacesh/templates.git//dind/module?ref=v1.1.3"
 
   project_name           = "example"
   git_repos              = { "example" = "https://github.com/codespacesh/example" }
