@@ -8,7 +8,9 @@
       "Glob",
       "Grep",
       "WebFetch",
-      "WebSearch"
+      "WebSearch",
+      "mcp__coder__*",
+      "mcp__playwright__*"
     ],
     "deny": [
       "Bash(git push --force*)",
