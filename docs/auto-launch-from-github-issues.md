@@ -93,7 +93,9 @@ Create `.claude/settings.json` with permissions for autonomous operation:
       "Glob",
       "Grep",
       "WebFetch",
-      "WebSearch"
+      "WebSearch",
+      "mcp__coder__*",
+      "mcp__playwright__*"
     ],
     "deny": [
       "Bash(git push --force*)",
@@ -121,7 +123,7 @@ See `.github/workflows/launch-codespace.yaml` and `.github/workflows/push-templa
 
 ## Claude Code Sessions
 
-Claude Code runs in numbered tmux sessions inside the workspace. The startup script automatically launches `claude-1` when an issue is assigned.
+Claude Code runs in numbered tmux sessions inside the workspace. The startup script (`claude-session`) automatically launches `claude-1` when an issue is assigned. It builds a prompt from the issue metadata and delivers it to Claude via a heredoc on stdin, so Claude starts working immediately without interactive input.
 
 ### Attaching to a session
 
