@@ -24,7 +24,6 @@ jobs:
         env:
           CODER_URL: https://noel.codespace.sh
           CODER_SESSION_TOKEN: ${{ secrets.CODER_TOKEN }}
-          ISSUE_BODY: ${{ github.event.issue.body }}
           ISSUE_TITLE: ${{ github.event.issue.title }}
         run: |
           WS_NAME="example-issue-${{ github.event.issue.number }}"
@@ -33,7 +32,6 @@ jobs:
             coder update "$WS_NAME" --always-prompt=false \
               --parameter issue_number="${{ github.event.issue.number }}" \
               --parameter issue_title="$ISSUE_TITLE" \
-              --parameter issue_body="$ISSUE_BODY" \
               --parameter issue_branch="${{ steps.branch.outputs.name }}" \
               --parameter "ai_prompt=Working on issue #${{ github.event.issue.number }}"
             coder restart "$WS_NAME" --yes
@@ -44,7 +42,6 @@ jobs:
               --parameter disk_size=50 \
               --parameter issue_number="${{ github.event.issue.number }}" \
               --parameter issue_title="$ISSUE_TITLE" \
-              --parameter issue_body="$ISSUE_BODY" \
               --parameter issue_branch="${{ steps.branch.outputs.name }}" \
               --parameter "ai_prompt=Working on issue #${{ github.event.issue.number }}"
           fi

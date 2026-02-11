@@ -159,7 +159,6 @@ Detach from any session with `Ctrl+B, D`.
 |-----------|-------------|
 | `issue_number` | GitHub issue number |
 | `issue_title` | Issue title |
-| `issue_body` | Issue body text |
 | `issue_branch` | Branch name for the issue |
 | `ai_prompt` | Custom prompt for the AI agent (auto-generated from issue if not set) |
 | `cpu` | CPU cores (2, 4, 8, 16) |
