@@ -123,35 +123,29 @@ See `.github/workflows/launch-codespace.yaml` and `.github/workflows/push-templa
 
 ## Claude Code Sessions
 
-Claude Code runs in numbered tmux sessions inside the workspace. The startup script (`claude-session`) automatically launches `claude-1` when an issue is assigned. It builds a prompt from the issue metadata and delivers it to Claude via a heredoc on stdin, so Claude starts working immediately without interactive input.
+Claude Code runs in codewire (`cw`) sessions inside the workspace. The startup script automatically launches a session when an issue is assigned, using `cw launch` to start Claude with the issue prompt.
 
-### Attaching to a session
+### Managing sessions
 
 ```bash
 # SSH into the workspace
 coder ssh <workspace>
 
-# Attach to the Claude session (auto-selects if only one)
-claude-attach
+# List active sessions
+cw list
 
-# Attach to a specific session
-claude-attach 1
+# Attach to a session
+cw attach <id>
 
-# List all active sessions
-claude-attach
+# View session output without attaching
+cw logs <id>
+
+# Launch another Claude session
+cw launch -- claude
+
+# Kill a session
+cw kill <id>
 ```
-
-### Launching additional sessions
-
-```bash
-# Start another Claude session (auto-numbers to next available)
-claude-session
-
-# Start a specific numbered session
-claude-session 3
-```
-
-Detach from any session with `Ctrl+B, D`.
 
 ## Template Parameters
 
