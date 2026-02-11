@@ -10,6 +10,21 @@
       "WebFetch",
       "WebSearch"
     ],
-    "deny": []
+    "deny": [
+      "Bash(git push --force*)",
+      "Bash(git push -f*)",
+      "Bash(git push * --force*)",
+      "Bash(git push * -f*)",
+      "Bash(git push origin main*)",
+      "Bash(git push origin master*)",
+      "Bash(git checkout main)",
+      "Bash(git checkout master)",
+      "Edit(.github/workflows/*)",
+      "Write(.github/workflows/*)",
+      "Edit(.claude/settings.json)",
+      "Write(.claude/settings.json)",
+      "Edit(CLAUDE.md)",
+      "Write(CLAUDE.md)"
+    ]
   }
 }
