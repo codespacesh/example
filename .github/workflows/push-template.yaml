@@ -19,4 +19,5 @@ jobs:
           CODER_URL: https://noel.codespace.sh
           CODER_SESSION_TOKEN: ${{ secrets.CODER_TOKEN }}
         run: |
-          coder templates push example --directory coder --yes
+          coder templates push example --directory coder --yes \
+            --variable claude_code_oauth_token="${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}"
