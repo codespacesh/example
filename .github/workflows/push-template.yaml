@@ -9,11 +9,10 @@ on:
 jobs:
   push:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/codespacesh/coder-cli:latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install Coder CLI
-        run: curl -fsSL https://coder.com/install.sh | sh
 
       - name: Push template
         env:
