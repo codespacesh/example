@@ -1,6 +1,6 @@
 # Example App
 
-A minimal TanStack Start web app with Docker Compose, built as a demo project for the [codespace.sh](https://codespace.sh) DinD (Docker-in-Docker) template.
+A minimal TanStack Start web app with Docker Compose, built as a demo project for the [codewire.sh](https://codewire.sh) DinD (Docker-in-Docker) template.
 
 ## Getting Started
 

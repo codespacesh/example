@@ -12,7 +12,7 @@ function HomePage() {
       </h1>
       <p className="text-lg text-[var(--color-muted-foreground)] mb-12">
         A minimal TanStack Start app with Docker Compose, built to demo the
-        codespace.sh DinD template.
+        codewire.sh DinD template.
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

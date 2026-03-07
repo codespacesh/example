@@ -18,7 +18,7 @@ GitHub Issue (labeled) → GitHub Action → Coder CLI → Workspace Created →
 
 ## Prerequisites
 
-- A Coder deployment (e.g., `https://noel.codespace.sh`)
+- A Coder deployment (e.g., `https://noel.codewire.sh`)
 - The template pushed to Coder (auto-pushed on merge via `push-template.yaml`)
 - GitHub secrets configured: `CODER_TOKEN`, `CLAUDE_CODE_OAUTH_TOKEN`
 - Coder External Authentication configured for GitHub (so `gh` CLI works inside workspaces)
@@ -66,7 +66,7 @@ variable "claude_code_oauth_token" {
 }
 
 module "workspace" {
-  source = "git::https://github.com/codespacesh/templates.git//dind/module"
+  source = "git::https://github.com/codewiresh/templates.git//dind/module"
 
   project_name            = "myproject"
   git_repos               = { "myproject" = "https://github.com/org/myproject" }

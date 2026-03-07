@@ -20,7 +20,7 @@ function AboutPage() {
       <h1 className="text-4xl font-bold tracking-tight mb-4">About</h1>
       <p className="text-lg text-[var(--color-muted-foreground)] mb-8">
         This example app demonstrates a minimal TanStack Start setup running
-        inside Docker, designed as a starter for the codespace.sh DinD template.
+        inside Docker, designed as a starter for the codewire.sh DinD template.
       </p>
 
       <h2 className="text-xl font-semibold mb-4">Tech Stack</h2>
